@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rohit Kandelkar | Portfolio Website</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap');
+        
+        body {
+            font-family: 'Roboto Condensed', sans-serif;
+            background-color: #0a0a0a;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+        
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            opacity: 0.4;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #ff0000;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: -10px;
+            left: 0;
+            background: linear-gradient(90deg, #ff0000, transparent);
+        }
+        
+        .project-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: rgba(20, 20, 20, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(255, 0, 0, 0.3);
+        }
+        
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 2px;
+            height: 100%;
+            background: #ff0000;
+            left: 10px;
+            top: 20px;
+        }
+        
+        .timeline-dot {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #ff0000;
+            position: absolute;
+            left: 0;
+            top: 15px;
+        }
+        
+        .contact-input {
+            background: rgba(20, 20, 20, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-input:focus {
+            border-color: #ff0000;
+            box-shadow: 0 0 0 2px rgba(255, 0, 0, 0.3);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(90deg, #ff0000, #ff5e00);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.4);
+        }
+        
+        .social-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-5px) scale(1.1);
+            color: #ff0000;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 2rem;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-20px);}
+            60% {transform: translateY(-10px);}
+        }
+    </style>
+</head>
+<body class="relative">
+    <!-- Hero Section -->
+    <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
+       <img src="images/Vice_City_08.jpg" alt="Hero Background" class="hero-video object-cover w-full h-full" />
+        <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+        <div class="container mx-auto px-6 z-10 text-center">
+            <h1 class="text-5xl md:text-7xl font-bold mb-4 tracking-wider">ROHIT KANDELKAR</h1>
+            <p class="text-xl md:text-2xl mb-8 uppercase tracking-widest text-red-500">Aspiring Devops and Data Engineer</p>
+            <div class="flex justify-center space-x-4">
+                <a href="#projects" class="btn-primary px-8 py-3 rounded-full font-bold uppercase tracking-wider">View Work</a>
+                <a href="#contact" class="px-8 py-3 rounded-full font-bold uppercase tracking-wider border border-white hover:border-red-500 hover:text-red-500 transition-all">Contact Me</a>
+            </div>
+        </div>
+        <a href="#about" class="scroll-down">
+            <i class="fas fa-chevron-down"></i>
+        </a>
+    </section>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 w-full z-50 bg-black bg-opacity-90 backdrop-blur-md py-4 shadow-lg">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="#home" class="text-2xl font-bold text-red-500">RK</a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="nav-link uppercase tracking-wider">Home</a>
+                <a href="#about" class="nav-link uppercase tracking-wider">About</a>
+                <a href="#projects" class="nav-link uppercase tracking-wider">Projects</a>
+                <a href="#skills" class="nav-link uppercase tracking-wider">Skills</a>
+                <a href="#experience" class="nav-link uppercase tracking-wider">Experience</a>
+                <a href="#contact" class="nav-link uppercase tracking-wider">Contact</a>
+            </div>
+            <button class="md:hidden text-white focus:outline-none" id="menu-toggle">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden bg-black bg-opacity-95 w-full absolute left-0 top-full py-4 px-6" id="mobile-menu">
+            <div class="flex flex-col space-y-4">
+                <a href="#home" class="nav-link uppercase tracking-wider">Home</a>
+                <a href="#about" class="nav-link uppercase tracking-wider">About</a>
+                <a href="#projects" class="nav-link uppercase tracking-wider">Projects</a>
+                <a href="#skills" class="nav-link uppercase tracking-wider">Skills</a>
+                <a href="#experience" class="nav-link uppercase tracking-wider">Experience</a>
+                <a href="#contact" class="nav-link uppercase tracking-wider">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gradient-to-b from-black to-gray-900">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-16 text-center section-title">ABOUT ME</h2>
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/3 mb-10 md:mb-0 flex justify-center">
+                    <div class="relative">
+                        <img src="images/rohit.jpg" alt="Profile" class="w-64 h-64 rounded-full border-4 border-red-500 object-cover">
+                        <div class="absolute -bottom-3 -right-3 bg-red-500 rounded-full w-16 h-16 flex items-center justify-center">
+                            <i class="fas fa-user text-3xl"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-2/3 md:pl-16">
+                    <h3 class="text-2xl font-bold mb-4">Who Am I?</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        I'm a passionate and curious Computer Science student currently in my final year, actively exploring both DevOps and 
+                        Data Analytics. My journey began with building practical projects using various tech stack and has grown into a 
+                        strong focus on cloud computing and data-driven decision-making.
+                    </p>
+                    <p class="text-gray-300 mb-8 leading-relaxed">
+                        With a solid foundation in Data Engineering and Devops Engineering, I'm on a mission to bridge the gap between infrastructure 
+                        automation and business insights. Whether it's analyzing user behavior through dashboards or deploying scalable apps using Devops pipelines, 
+                        I strive to create impact through efficient and intelligent solutions.
+                    </p>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-map-marker-alt text-red-500 mr-2"></i>
+                            <span>PCMC, Pune</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope text-red-500 mr-2"></i>
+                            <span>rohitkandelkar78@gmail.com</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-phone text-red-500 mr-2"></i>
+                            <span>+91-9284260958</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-birthday-cake text-red-500 mr-2"></i>
+                            <span>21 Years</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-graduation-cap text-red-500 mr-2"></i>
+                            <span>B.Tech in Computer Engineering</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-laptop-code text-red-500 mr-2"></i>
+                            <span>Student</span>
+                        </div>
+                    </div>
+                    <div class="mt-8 flex space-x-4">
+                        <!-- ✅ This opens the modal -->
+                        <button onclick="openResumeModal()" class="btn-primary px-6 py-2 rounded-full font-bold uppercase tracking-wider text-sm">
+                            Download Resume
+                        </button>
+
+                        <!-- ✅ This scrolls to contact section -->
+                        <a href="#contact"
+                            class="px-6 py-2 rounded-full font-bold uppercase tracking-wider text-sm border border-white hover:border-red-500 hover:text-red-500 transition-all">
+                            Hire Me
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-16 text-center section-title">MY PROJECTS</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="project-grid">
+                <!-- Project Item 1 -->
+                <div class="project-item project-card rounded-lg overflow-hidden" data-category="AIML">
+                    <div class="relative overflow-hidden">
+                        <img src="images/BGDL.png" alt="Project 1" class="w-full h-64 object-cover transition-transform duration-500 hover:scale-110">
+                        <div class="absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
+                           <a href="https://github.com/rohit-kandelkar/Blood_Group_Prediction_Using_Fingerprint_patterns" 
+                                target="_blank"
+                                class="btn-primary px-6 py-2 rounded-full font-bold uppercase tracking-wider text-sm">
+                                View Project
+                           </a>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Blood Group Prediction from Fingerprint Patterns</h3>
+                        <p class="text-gray-400">A CNN-based system that classifies blood groups from fingerprint images, delivering fast, non-invasive, and cost-effective predictions of ABO and Rh types.</p>
+                    </div>
+                </div>
+                
+                <!-- Projects Item 2 -->
+                <div class="project-item project-card rounded-lg overflow-hidden" data-category="AIML">
+                    <div class="relative overflow-hidden">
+                        <img src="images/stock.jpg" alt="Project 2" class="w-full h-64 object-cover transition-transform duration-500 hover:scale-110">
+                        <div class="absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
+                           <a href="https://github.com/rohit-kandelkar/Stock-Market-Price-Predictor" 
+                                target="_blank"
+                                class="btn-primary px-6 py-2 rounded-full font-bold uppercase tracking-wider text-sm">
+                                View Project
+                           </a>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Stock Market Price Predictor</h3>
+                        <p class="text-gray-400">This project predicts stock prices for Tata Motors, BHEL, Zomato, TCS, and OIL using Linear Regression, SVM, Random Forest, and XGBoost. We trained models on historical data, evaluated using MSE and R-squared. Future enhancements include deep learning techniques like LSTM for better predictions.</p>
+                    </div>
+                </div>
+                
+                <!-- Project Item 3 -->
+                <div class="project-item project-card rounded-lg overflow-hidden" data-category="AIML">
+                    <div class="relative overflow-hidden">
+                        <img src="images/houses.jpg" alt="Project 3" class="w-full h-64 object-cover transition-transform duration-500 hover:scale-110">
+                        <div class="absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
+                           <a href="https://github.com/rohit-kandelkar/An_Optimal_House_Price_Prediction_Algorithm" 
+                                target="_blank"
+                                class="btn-primary px-6 py-2 rounded-full font-bold uppercase tracking-wider text-sm">
+                                View Project
+                           </a>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">An Optimal House Price Prediction Model</h3>
+                        <p class="text-gray-400">Machine Learning project replicating and extending the research paper "An Optimal House Price Prediction Algorithm: XGBoost" using Ames Iowa (USA) and Indian housing datasets with detailed model comparison and analysis.</p>
+                    </div>
+                </div>
+                
+                <!-- Project Item 4 -->
+                <div class="project-item project-card hidden rounded-lg overflow-hidden" data-category="AIML">
+                    <div class="relative overflow-hidden">
+                        <img src="images/movie.jpg" alt="Project 4" class="w-full h-64 object-cover transition-transform duration-500 hover:scale-110">
+                        <div class="absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
+                           <a href="https://github.com/rohit-kandelkar/Movie-Recommendation-Using-R" 
+                                target="_blank"
+                                class="btn-primary px-6 py-2 rounded-full font-bold uppercase tracking-wider text-sm">
+                                View Project
+                           </a>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Movie Recommendation system using R</h3>
+                        <p class="text-gray-400">A simple movie recommendation system built in R using collaborative filtering on the MovieLens dataset.</p>
+                    </div>
+                </div>
+                
+                <!-- Project Item 5 -->
+                <div class="project-item project-card hidden rounded-lg overflow-hidden" data-category="DEVOPS">
+                    <div class="relative overflow-hidden">
+                        <img src="https://source.unsplash.com/random/600x400/?mobile" alt="Project 5" class="w-full h-64 object-cover transition-transform duration-500 hover:scale-110">
+                        <div class="absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
+                            <a href="#" class="btn-primary px-6 py-2 rounded-full font-bold uppercase tracking-wider text-sm">View Project</a>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">GitHub Actions CI Workflow</h3>
+                        <p class="text-gray-400">Set up an automated GitHub Actions workflow to run tests and build a simple Python or Node.js project.</p>
+                    </div>
+                </div>
+                
+                <!-- Project Item 6 -->
+                <div class="project-item project-card hidden overflow-hidden" data-category="DEVOPS">
+                    <div class="relative overflow-hidden">
+                        <img src="https://source.unsplash.com/random/600x400/?poster" alt="Project 6" class="w-full h-64 object-cover transition-transform duration-500 hover:scale-110">
+                        <div class="absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
+                            <a href="#" class="btn-primary px-6 py-2 rounded-full font-bold uppercase tracking-wider text-sm">View Project</a>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Deploy a Web App on AWS</h3>
+                        <p class="text-gray-400">Deployed a basic Flask/React app using AWS EC2 with firewall and SSH setup.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <button id="loadMore" class="btn-primary px-8 py-3 rounded-full font-bold uppercase tracking-wider inline-block">Load More</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-gradient-to-b from-gray-900 to-black">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-16 text-center section-title">MY SKILLS</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <!-- Column 1: Technical Skills -->
+                <div>
+                    <h3 class="text-2xl font-bold mb-8">Technical Skills</h3>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>Programming Languages: Python, C++ and Java</span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>Tools like R, SQL, Scikitlearn, NumPy, & Pandas</span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>Database Knowledge: SQL and MySQL</span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>Cloud Platforms: GCP and AWS</span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>Machine Learning and Computer Network Fundamentals</span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>Linux/Unix Fundamentals</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-8">Soft Skills</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-check text-red-500 mr-3"></i>
+                            <span>Teamwork and Collaboration</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check text-red-500 mr-3"></i>
+                            <span>Strong Analytical & Problem Solving Skills</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check text-red-500 mr-3"></i>
+                            <span>Adaptability and Flexibility</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check text-red-500 mr-3"></i>
+                            <span>Strong Written and Verbal Communication</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check text-red-500 mr-3"></i>
+                            <span>Time Management & Organization</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check text-red-500 mr-3"></i>
+                            <span>Curiosity and Eagerness to Learn</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 text-center">
+                <button onclick="openModal()" class="btn-primary px-8 py-3 rounded-full font-bold uppercase tracking-wider inline-block">
+                    View Certificates
+                </button>
+            </div>
+
+        </div>
+    </section>
+    
+    <!-- EXPERIENCE & EDUCATION SECTION -->
+    <section id="experience" class="py-20 bg-black text-white">
+    <div class="container mx-auto px-6">
+        <h2 class="text-4xl font-bold mb-16 text-center section-title">EXPERIENCE & EDUCATION</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+
+        <!-- COLUMN 1: Work Experience -->
+        <div>
+            <h3 class="text-2xl font-bold mb-8">Work Experience</h3>
+            <div class="relative">
+
+            <!-- Altair Internship -->
+            <div class="timeline-item mb-8 pl-12 relative">
+                <div class="timeline-dot"></div>
+                <div class="bg-gray-800 p-6 rounded-lg">
+                <div class="flex justify-between items-start mb-2">
+                    <h4 class="text-xl font-bold">Altair Data Science Virtual Intern</h4>
+                    <span class="bg-red-500 text-xs px-2 py-1 rounded-full">Apr 2025 - Jun 2025</span>
+                </div>
+                <div class="text-red-500 mb-2">AICTE · Remote</div>
+                <p class="text-gray-400">
+                    Gained hands-on experience in ML and Data Science using RapidMiner for data preprocessing, modeling, and algorithm application.
+                </p>
+                </div>
+            </div>
+
+            <!-- Google AI ML -->
+            <div class="timeline-item mb-8 pl-12 relative">
+                <div class="timeline-dot"></div>
+                <div class="bg-gray-800 p-6 rounded-lg">
+                <div class="flex justify-between items-start mb-2">
+                    <h4 class="text-xl font-bold">Google AI/ML Virtual Intern</h4>
+                    <span class="bg-red-500 text-xs px-2 py-1 rounded-full">Apr 2024 - Jun 2024</span>
+                </div>
+                <div class="text-red-500 mb-2">AICTE · Remote</div>
+                <p class="text-gray-400">
+                    Completed AI/ML internship using TensorFlow, focusing on data preprocessing, model training, and deep learning.
+                </p>
+                </div>
+            </div>
+
+            <!-- Palo Alto -->
+            <div class="timeline-item pl-12 relative">
+                <div class="timeline-dot"></div>
+                <div class="bg-gray-800 p-6 rounded-lg">
+                <div class="flex justify-between items-start mb-2">
+                    <h4 class="text-xl font-bold">Palo Alto Cybersecurity Virtual Intern</h4>
+                    <span class="bg-red-500 text-xs px-2 py-1 rounded-full">Jan 2024 - Mar 2024</span>
+                </div>
+                <div class="text-red-500 mb-2">AICTE · Remote</div>
+                <p class="text-gray-400">
+                    Built core cybersecurity skills in threat detection, network security, incident response, and ethical hacking.
+                </p>
+                </div>
+            </div>
+
+            </div>
+        </div>
+
+        <!-- COLUMN 2: Education -->
+        <div>
+            <h3 class="text-2xl font-bold mb-8">Education</h3>
+            <div class="relative">
+
+            <!-- BTech -->
+            <div class="timeline-item mb-8 pl-12 relative">
+                <div class="timeline-dot"></div>
+                <div class="bg-gray-800 p-6 rounded-lg">
+                <div class="flex justify-between items-start mb-2">
+                    <h4 class="text-xl font-bold">Bachelor of Technology in Computer Engineering (RL)</h4>
+                    <span class="bg-red-500 text-xs px-2 py-1 rounded-full">2022 - 2026</span>
+                </div>
+                <div class="text-red-500 mb-2">Pimpri Chinchwad College of Engineering, Pune</div>
+                <p class="text-gray-400">
+                    Specialized in Cloud Computing, Data Analytics, and AI/ML. Completed multiple projects and virtual internships.
+                </p>
+                </div>
+            </div>
+
+            <!-- HSC -->
+            <div class="timeline-item mb-8 pl-12 relative">
+                <div class="timeline-dot"></div>
+                <div class="bg-gray-800 p-6 rounded-lg">
+                <div class="flex justify-between items-start mb-2">
+                    <h4 class="text-xl font-bold">HSC (Junior College in Science)</h4>
+                    <span class="bg-red-500 text-xs px-2 py-1 rounded-full">2020 - 2022</span>
+                </div>
+                <div class="text-red-500 mb-2">Pratibha Junior College of Arts, Commerce and Science</div>
+                <p class="text-gray-400">
+                    Completed 12th grade with a focus on PCM subjects and computer fundamentals.
+                </p>
+                </div>
+            </div>
+            <!-- SSC -->
+            <div class="timeline-item mb-8 pl-12 relative">
+                <div class="timeline-dot"></div>
+                <div class="bg-gray-800 p-6 rounded-lg">
+                <div class="flex justify-between items-start mb-2">
+                    <h4 class="text-xl font-bold">SSC (High School)</h4>
+                    <span class="bg-red-500 text-xs px-2 py-1 rounded-full">2011 - 2020</span>
+                </div>
+                <div class="text-red-500 mb-2">Nirmal Bethany High School</div>
+                <p class="text-gray-400">
+                    Focused on holistic development through academics, sports, and community involvement during high school years.
+                </p>
+                </div>
+            </div>
+
+            </div>
+        </div>
+
+        </div>
+    </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-16 text-center section-title">GET IN TOUCH</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-2xl font-bold mb-6">Contact Information</h3>
+                    <p class="text-gray-400 mb-8">
+                        Have a project in mind or want to discuss potential collaboration? Feel free to reach out through any of the channels below. I typically respond within 24 hours.
+                    </p>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="bg-red-500 p-3 rounded-full mr-4">
+                                <i class="fas fa-map-marker-alt text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">Location</h4>
+                                <p class="text-gray-400">PCMC, Pune, Maharashstra</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-red-500 p-3 rounded-full mr-4">
+                                <i class="fas fa-envelope text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">Email</h4>
+                                <p class="text-gray-400">rohitkandelkar78@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-red-500 p-3 rounded-full mr-4">
+                                <i class="fas fa-phone text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">Phone</h4>
+                                <p class="text-gray-400">+91-9284260958</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-10">
+                        <h4 class="font-bold mb-4">Follow Me</h4>
+                        <div class="flex space-x-6">
+                            <a href="https://www.linkedin.com/in/rohit-kandelkar-17474b258/" class="text-gray-500 hover:text-white transition" target="_blank">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="https://github.com/rohit-kandelkar" class="text-gray-500 hover:text-white transition" target="_blank">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://www.geeksforgeeks.org/user/rohitnk1234/" class="text-gray-500 hover:text-white transition" target="_blank">
+                                <i class="fas fa-code"></i>
+                            </a>
+                            <a href="https://www.instagram.com/rohit_itiz?igsh=Z2ltNjJyMmd1ejh3" class="text-gray-500 hover:text-white transition" target="_blank">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <form id="contact-form" action="https://formspree.io/f/mnnzqobp" method="POST" onsubmit="return handleSubmit(event)" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <input type="text" name="name" placeholder="Your Name" required
+                                class="w-full px-4 py-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:border-red-500" />
+
+                            <input type="email" name="email" placeholder="Your Email" required
+                                class="w-full px-4 py-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:border-red-500" />
+                        </div>
+
+                        <input type="text" name="subject" placeholder="Subject" required
+                            class="w-full px-4 py-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:border-red-500" />
+
+                        <textarea name="message" rows="5" placeholder="Message" required
+                            class="w-full px-4 py-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:border-red-500"></textarea>
+
+                        <button type="submit"
+                            class="bg-gradient-to-r from-red-600 to-orange-500 text-white px-8 py-3 rounded-full font-bold uppercase tracking-wider">
+                            Send Message
+                        </button>
+
+                        <!-- This is where the thank-you message will show up -->
+                        <p id="form-message" class="text-green-400 text-sm mt-4 hidden">Thank you for your message! Rohit will get in touch with you soon.</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-black">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="#home" class="text-2xl font-bold text-red-500">RK</a>
+                </div>
+                <div class="flex flex-wrap justify-center md:justify-end space-x-6 mb-6 md:mb-0">
+                    <a href="#home" class="text-gray-400 hover:text-white transition">Home</a>
+                    <a href="#about" class="text-gray-400 hover:text-white transition">About</a>
+                    <a href="#portfolio" class="text-gray-400 hover:text-white transition">Portfolio</a>
+                    <a href="#skills" class="text-gray-400 hover:text-white transition">Skills</a>
+                    <a href="#experience" class="text-gray-400 hover:text-white transition">Experience</a>
+                    <a href="#contact" class="text-gray-400 hover:text-white transition">Contact</a>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 text-sm mb-4 md:mb-0">
+                    &copy; 2025 Rohit Kandelkar. All rights reserved.
+                </p>
+                <div class="flex space-x-4">
+                    <!-- LinkedIn -->
+                    <a href="https://www.linkedin.com/in/rohit-kandelkar-17474b258/" class="text-gray-500 hover:text-white transition" target="_blank">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+
+                    <!-- GitHub -->
+                    <a href="https://github.com/rohit-kandelkar" class="text-gray-500 hover:text-white transition" target="_blank">
+                        <i class="fab fa-github"></i>
+                    </a>
+
+                    <!-- GeeksforGeeks (use code icon as a placeholder) -->
+                    <a href="https://www.geeksforgeeks.org/user/rohitnk1234/" class="text-gray-500 hover:text-white transition" target="_blank">
+                        <i class="fas fa-code"></i>
+                    </a>
+
+                    <!-- Instagram -->
+                    <a href="https://www.instagram.com/rohit_itiz?igsh=Z2ltNjJyMmd1ejh3" class="text-gray-500 hover:text-white transition" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+        
+        // Portfolio filtering
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => {
+                    btn.classList.remove('bg-red-500');
+                    btn.classList.add('bg-gray-800');
+                });
+                
+                // Add active class to clicked button
+                this.classList.remove('bg-gray-800');
+                this.classList.add('bg-red-500');
+                
+                const filterValue = this.getAttribute('data-filter');
+                
+                portfolioItems.forEach(item => {
+                    if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Set first filter button as active by default
+        if (filterButtons.length > 0) {
+            filterButtons[0].classList.remove('bg-gray-800');
+            filterButtons[0].classList.add('bg-red-500');
+        }
+        
+        // Add scroll effect to navbar
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('shadow-xl');
+            } else {
+                nav.classList.remove('shadow-xl');
+            }
+        });
+    </script>
+    <script>
+        let currentVisible = 3;
+        const loadMoreBtn = document.getElementById('loadMore');
+        const projectItems = document.querySelectorAll('.project-item');
+
+        loadMoreBtn.addEventListener('click', () => {
+            let shown = 0;
+            for (let i = currentVisible; i < projectItems.length && shown < 4; i++) {
+                if (projectItems[i].classList.contains("hidden")) {
+                    projectItems[i].classList.remove("hidden");
+                    shown++;
+                }
+            }
+            currentVisible += shown;
+            if (currentVisible >= projectItems.length) {
+                loadMoreBtn.style.display = "none";
+            }
+        });
+    </script>
+    <script>
+        async function handleSubmit(event) {
+            event.preventDefault(); // Stop default form submission
+
+            const form = event.target;
+            const formMessage = document.getElementById("form-message");
+
+            const data = new FormData(form);
+            const response = await fetch(form.action, {
+                method: form.method,
+                body: data,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+
+            if (response.ok) {
+                form.reset(); // Clear all inputs
+                formMessage.classList.remove("hidden");
+                formMessage.classList.remove("text-red-500");
+                formMessage.classList.add("text-green-400");
+                formMessage.textContent = "Thank you! Your message has been sent. Rohit will get in touch with you soon :)";
+            } else {
+                formMessage.classList.remove("hidden");
+                formMessage.classList.remove("text-green-400");
+                formMessage.classList.add("text-red-500");
+                formMessage.textContent = "Oops! Something went wrong. Please try again.";
+            }
+
+            return false;
+        }
+    </script> 
+    <div id="certModal" class="fixed inset-0 bg-black bg-opacity-80 z-50 hidden flex items-center justify-center">
+    <div class="bg-white rounded-lg max-w-4xl w-full p-4 relative">
+        <button onclick="closeModal()" class="absolute top-2 right-4 text-black text-2xl font-bold">&times;</button>
+        <h3 class="text-xl font-semibold mb-4 text-black">My Certificates</h3>
+
+        <!-- Embed Google Drive Folder (iframe) -->
+        <iframe 
+        src="https://drive.google.com/embeddedfolderview?id=1gqFY90cJwt935f33PmvYIw7IEv8hoQdd#grid"
+        class="w-full h-[500px] border-2 border-gray-300 rounded"
+        allowfullscreen>
+        </iframe>
+    </div>
+    </div>
+    <script>
+        function openModal() {
+            document.getElementById("certModal").classList.remove("hidden");
+        }
+        function closeModal() {
+            document.getElementById("certModal").classList.add("hidden");
+        }
+    </script>
+    <!-- Resume Modal -->
+    <div id="resumeModal" class="fixed inset-0 bg-black bg-opacity-80 z-50 hidden flex items-center justify-center">
+        <div class="bg-white rounded-lg max-w-3xl w-full p-4 relative">
+            <button onclick="closeResumeModal()" class="absolute top-2 right-4 text-black text-2xl font-bold">&times;</button>
+            <h3 class="text-xl font-semibold mb-4 text-black">My Resume</h3>
+
+            <!-- Embedded PDF -->
+            <iframe 
+            src="https://drive.google.com/file/d/1y1Dmo0rjOi3VEI_dsDyNu8ZoT71tW6nz/preview"
+            class="w-full h-[500px] border-2 border-gray-300 rounded"
+            allow="autoplay">
+            </iframe>
+
+            <!-- Optional local download fallback -->
+            <div class="text-right mt-4">
+            <a href="https://drive.google.com/uc?export=download&id=1y1Dmo0rjOi3VEI_dsDyNu8ZoT71tW6nz"
+                class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 font-bold text-sm"
+                target="_blank">
+                Download PDF
+            </a>
+            </div>
+        </div>
+    </div>
+    <script>
+        function openResumeModal() {
+            document.getElementById("resumeModal").classList.remove("hidden");
+        }
+
+        function closeResumeModal() {
+            document.getElementById("resumeModal").classList.add("hidden");
+        }
+    </script>
+</body>
+</html>
