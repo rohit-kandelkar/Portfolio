@@ -1,6 +1,6 @@
 # 🌐 Personal Portfolio Website
 
-![Portfolio Screenshot](./images/Screenshot (583).png)
+![Portfolio Screenshot](./images/Screenshot (583))
 
 A fully responsive and interactive personal portfolio website built with **HTML**, **Tailwind CSS**, and **JavaScript** to showcase my skills, projects, achievements, and contact details.  
 Hosted on **Vercel** for fast, reliable, and free deployment.
