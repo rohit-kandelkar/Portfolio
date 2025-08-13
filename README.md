@@ -20,5 +20,11 @@ Hosted on **Vercel** for fast, reliable, and free deployment.
 - **Forms:** Formspree
 - **Assets:** Google Drive (resume & certificates)
 
-## 📂 Project Structure
+## 🚀 Live Demo
+🔗 https://portfolio-roan-two-89.vercel.app/
+
+## 📧 Contact
+
+If you want to collaborate or have opportunities, feel free to reach out via the **Contact** section on my website.
+
 
